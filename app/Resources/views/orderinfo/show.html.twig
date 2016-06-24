@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>OrderInfo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ orderInfo.id }}</td>
+            </tr>
+            <tr>
+                <th>Orderdate</th>
+                <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Goodsfee</th>
+                <td>{{ orderInfo.goodsfee }}</td>
+            </tr>
+            <tr>
+                <th>Totalprice</th>
+                <td>{{ orderInfo.totalPrice }}</td>
+            </tr>
+            <tr>
+                <th>Shipfee</th>
+                <td>{{ orderInfo.shipFee }}</td>
+            </tr>
+            <tr>
+                <th>Paytype</th>
+                <td>{{ orderInfo.payType }}</td>
+            </tr>
+            <tr>
+                <th>Receivername</th>
+                <td>{{ orderInfo.receiverName }}</td>
+            </tr>
+            <tr>
+                <th>Receiverphone</th>
+                <td>{{ orderInfo.receiverPhone }}</td>
+            </tr>
+            <tr>
+                <th>Receiveradress</th>
+                <td>{{ orderInfo.receiverAdress }}</td>
+            </tr>
+            <tr>
+                <th>Receiveremail</th>
+                <td>{{ orderInfo.receiverEmail }}</td>
+            </tr>
+            <tr>
+                <th>Receivernation</th>
+                <td>{{ orderInfo.receiverNation }}</td>
+            </tr>
+            <tr>
+                <th>Receiverpostcode</th>
+                <td>{{ orderInfo.receiverPostcode }}</td>
+            </tr>
+            <tr>
+                <th>Isconfirm</th>
+                <td>{% if orderInfo.isConfirm %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Ispayment</th>
+                <td>{% if orderInfo.isPayment %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('orderinfo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('orderinfo_edit', { 'id': orderInfo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

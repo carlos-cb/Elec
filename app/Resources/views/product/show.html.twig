@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Productname</th>
+                <td>{{ product.productname }}</td>
+            </tr>
+            <tr>
+                <th>Marketprice</th>
+                <td>{{ product.marketPrice }}</td>
+            </tr>
+            <tr>
+                <th>Memberprice</th>
+                <td>{{ product.memberPrice }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ product.stock }}</td>
+            </tr>
+            <tr>
+                <th>Buyminnumber</th>
+                <td>{{ product.buyMinNumber }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td>{{ product.imagen }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Ishot</th>
+                <td>{% if product.isHot %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isdiscount</th>
+                <td>{% if product.isDiscount %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createdate</th>
+                <td>{% if product.createDate %}{{ product.createDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

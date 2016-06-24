@@ -2,8 +2,8 @@ elec_cart:
     resource: "@ElecBundle/Resources/config/routing/cart.yml"
     prefix:   /admin/cart
 
-elec_homepage:
-    path:     /
+elec_homepage_admin:
+    path:     /admin
     defaults: { _controller: ElecBundle:Default:index }
 
 elec_cartitem:

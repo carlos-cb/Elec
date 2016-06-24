@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>OrderInfo list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Orderdate</th>
+                <th>Goodsfee</th>
+                <th>Totalprice</th>
+                <th>Shipfee</th>
+                <th>Paytype</th>
+                <th>Receivername</th>
+                <th>Receiverphone</th>
+                <th>Receiveradress</th>
+                <th>Receiveremail</th>
+                <th>Receivernation</th>
+                <th>Receiverpostcode</th>
+                <th>Isconfirm</th>
+                <th>Ispayment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for orderInfo in orderInfos %}
+            <tr>
+                <td><a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">{{ orderInfo.id }}</a></td>
+                <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ orderInfo.goodsfee }}</td>
+                <td>{{ orderInfo.totalPrice }}</td>
+                <td>{{ orderInfo.shipFee }}</td>
+                <td>{{ orderInfo.payType }}</td>
+                <td>{{ orderInfo.receiverName }}</td>
+                <td>{{ orderInfo.receiverPhone }}</td>
+                <td>{{ orderInfo.receiverAdress }}</td>
+                <td>{{ orderInfo.receiverEmail }}</td>
+                <td>{{ orderInfo.receiverNation }}</td>
+                <td>{{ orderInfo.receiverPostcode }}</td>
+                <td>{% if orderInfo.isConfirm %}Yes{% else %}No{% endif %}</td>
+                <td>{% if orderInfo.isPayment %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('orderinfo_edit', { 'id': orderInfo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('orderinfo_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

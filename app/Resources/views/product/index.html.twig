@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Productname</th>
+                <th>Marketprice</th>
+                <th>Memberprice</th>
+                <th>Stock</th>
+                <th>Buyminnumber</th>
+                <th>Imagen</th>
+                <th>Description</th>
+                <th>Ishot</th>
+                <th>Isdiscount</th>
+                <th>Createdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                <td>{{ product.productname }}</td>
+                <td>{{ product.marketPrice }}</td>
+                <td>{{ product.memberPrice }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.buyMinNumber }}</td>
+                <td>{{ product.imagen }}</td>
+                <td>{{ product.description }}</td>
+                <td>{% if product.isHot %}Yes{% else %}No{% endif %}</td>
+                <td>{% if product.isDiscount %}Yes{% else %}No{% endif %}</td>
+                <td>{% if product.createDate %}{{ product.createDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
