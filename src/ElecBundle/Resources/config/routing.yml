@@ -4,7 +4,7 @@ elec_cart:
 
 elec_homepage_admin:
     path:     /admin
-    defaults: { _controller: ElecBundle:Default:index }
+    defaults: { _controller: ElecBundle:Default:backEnd }
 
 elec_cartitem:
     resource: "@ElecBundle/Resources/config/routing/cartitem.yml"
@@ -33,3 +33,7 @@ elec_subcategory:
 elec_user:
     resource: "@ElecBundle/Resources/config/routing/user.yml"
     prefix:   /admin/user
+
+elec_homepage:
+    path:     /
+    defaults: { _controller: ElecBundle:Default:index }

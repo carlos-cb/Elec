@@ -78,9 +78,10 @@ class UserController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+            $userManager = $this->get('fos_user.user_manager');
+            /* @var $userManager \FOS\UserBundle\Doctrine\UserManager */
+            $userManager->updateUser($user);
+            //$em->flush();
 
             return $this->redirectToRoute('user_edit', array('id' => $user->getId()));
         }

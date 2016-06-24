@@ -5,15 +5,39 @@
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Enabled</th>
+            <th>Lastlogin</th>
+            <th>Locked</th>
+            <th>Expired</th>
+            <th>Roles</th>
+            <th>Credentialsexpired</th>
+            <th>Cart</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <td>{{ user.id }}</td>
+                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.username }}</a></td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.enabled }}</td>
+                <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ user.locked }}</td>
+                <td>{{ user.expired }}</td>
+                <td>{{ user.cart }}</td>
+                <td>
+                    <ul class="list">
+                        {%for role in user.roles %}
+                            <li>{{role}}</li>
+                        {%endfor%}
+                    </ul>
+                </td>
+                <td>{{ user.credentialsExpired }}</td>
                 <td>
                     <ul>
                         <li>
