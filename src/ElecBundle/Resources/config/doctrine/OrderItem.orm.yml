@@ -1,0 +1,32 @@
+ElecBundle\Entity\OrderItem:
+    type: entity
+    table: null
+    repositoryClass: ElecBundle\Repository\OrderItemRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        unitPrice:
+            type: float
+            length: 11
+        quantity:
+            type: integer
+            length: 11
+    manyToOne:
+        orderInfo:
+            targetEntity: OrderInfo
+            inversedBy: orderItems
+            joinColumn:
+                name: orderInfo_id
+                referencedColumnName: id
+    oneToOne:
+        product:
+            targetEntity: Product
+            inversedBy: orderItem
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

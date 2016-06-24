@@ -1,0 +1,57 @@
+ElecBundle\Entity\Product:
+    type: entity
+    table: null
+    repositoryClass: ElecBundle\Repository\ProductRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        productname:
+            type: string
+            length: 255
+        marketPrice:
+            type: float
+            length: 11
+        memberPrice:
+            type: float
+            length: 11
+            nullable: true
+        stock:
+            type: integer
+            length: 11
+        buyMinNumber:
+            type: integer
+            length: 11
+        imagen:
+            type: string
+            length: 255
+            nullable: true
+        description:
+            type: string
+            length: 255
+            nullable: true
+        isHot:
+            type: boolean
+        isDiscount:
+            type: boolean
+        createDate:
+            type: datetime
+    manyToOne:
+        subCategory:
+            targetEntity: SubCategory
+            inversedBy: products
+            joinColumn:
+                name: subCategory_id
+                referencedColumnName: id
+    oneToOne:
+        cartItem:
+            targetEntity: CartItem
+            mappedBy: product
+    oneToOne:
+        orderItem:
+            targetEntity: OrderItem
+            mappedBy: product
+    lifecycleCallbacks: {  }

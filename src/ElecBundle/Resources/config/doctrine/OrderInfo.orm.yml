@@ -1,0 +1,59 @@
+ElecBundle\Entity\OrderInfo:
+    type: entity
+    table: null
+    repositoryClass: ElecBundle\Repository\OrderInfoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        orderDate:
+            type: datetime
+        goodsfee:
+            type: float
+            length: 11
+        totalPrice:
+            type: float
+            length: 11
+        shipFee:
+            type: float
+            length: 11
+        payType:
+            type: string
+            length: 255
+        receiverName:
+            type: string
+            length: 255
+        receiverPhone:
+            type: string
+            length: 255
+        receiverAdress:
+            type: string
+            length: 255
+        receiverEmail:
+            type: string
+            length: 255
+        receiverNation:
+            type: string
+            length: 255
+        receiverPostcode:
+            type: string
+            length: 255
+        isConfirm:
+            type: boolean
+        isPayment:
+            type: boolean
+    oneToMany:
+        orderItems:
+            targetEntity: OrderItem
+            mappedBy: orderInfo
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: orderInfos
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

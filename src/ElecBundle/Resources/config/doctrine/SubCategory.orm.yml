@@ -1,0 +1,31 @@
+ElecBundle\Entity\SubCategory:
+    type: entity
+    table: null
+    repositoryClass: ElecBundle\Repository\SubCategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        subCategoryname:
+            type: string
+            length: 255
+            unique: true
+        description:
+            type: string
+            length: 255
+            nullable: true
+    manyToOne:
+        category:
+            targetEntity: Category
+            inversedBy: subCategorys
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+    oneToMany:
+        products:
+            targetEntity: Product
+            mappedBy: subCategory
+    lifecycleCallbacks: {  }

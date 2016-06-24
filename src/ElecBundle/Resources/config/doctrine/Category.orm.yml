@@ -1,0 +1,24 @@
+ElecBundle\Entity\Category:
+    type: entity
+    table: null
+    repositoryClass: ElecBundle\Repository\CategoryRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        categoryname:
+            type: string
+            length: 255
+            unique: true
+        description:
+            type: string
+            length: 255
+            nullable: true
+    oneToMany:
+        subCategorys:
+            targetEntity: SubCategory
+            mappedBy: category
+    lifecycleCallbacks: {  }

@@ -1,0 +1,23 @@
+ElecBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: ElecBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    oneToOne:
+        cart:
+            targetEntity: Cart
+            mappedBy: user
+    oneToMany:
+        orderInfos:
+            targetEntity: OrderInfo
+            mappedBy: user
+    oneToOne:
+        profile:
+            targetEntity: Profile
+            mappedBy: user
+    lifecycleCallbacks: {  }
