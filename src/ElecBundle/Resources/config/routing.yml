@@ -1,6 +1,6 @@
 elec_cart:
     resource: "@ElecBundle/Resources/config/routing/cart.yml"
-    prefix:   /cart
+    prefix:   /admin/cart
 
 elec_homepage:
     path:     /
@@ -8,24 +8,28 @@ elec_homepage:
 
 elec_cartitem:
     resource: "@ElecBundle/Resources/config/routing/cartitem.yml"
-    prefix:   /cartitem
+    prefix:   /admin/cartitem
 
 elec_category:
     resource: "@ElecBundle/Resources/config/routing/category.yml"
-    prefix:   /category
+    prefix:   /admin/category
 
 elec_orderinfo:
     resource: "@ElecBundle/Resources/config/routing/orderinfo.yml"
-    prefix:   /orderinfo
+    prefix:   /admin/orderinfo
 
 elec_orderitem:
     resource: "@ElecBundle/Resources/config/routing/orderitem.yml"
-    prefix:   /orderitem
+    prefix:   /admin/orderitem
 
 elec_product:
     resource: "@ElecBundle/Resources/config/routing/product.yml"
-    prefix:   /product
+    prefix:   /admin/product
 
 elec_subcategory:
     resource: "@ElecBundle/Resources/config/routing/subcategory.yml"
-    prefix:   /subcategory
+    prefix:   /admin/subcategory
+
+elec_user:
+    resource: "@ElecBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/user

@@ -1,0 +1,24 @@
+user_index:
+    path:     /
+    defaults: { _controller: "ElecBundle:User:index" }
+    methods:  GET
+
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "ElecBundle:User:show" }
+    methods:  GET
+
+user_new:
+    path:     /new
+    defaults: { _controller: "ElecBundle:User:new" }
+    methods:  [GET, POST]
+
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ElecBundle:User:edit" }
+    methods:  [GET, POST]
+
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ElecBundle:User:delete" }
+    methods:  DELETE
