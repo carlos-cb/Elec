@@ -1,0 +1,24 @@
+cartitem_index:
+    path:     /
+    defaults: { _controller: "ElecBundle:CartItem:index" }
+    methods:  GET
+
+cartitem_show:
+    path:     /{id}/show
+    defaults: { _controller: "ElecBundle:CartItem:show" }
+    methods:  GET
+
+cartitem_new:
+    path:     /new
+    defaults: { _controller: "ElecBundle:CartItem:new" }
+    methods:  [GET, POST]
+
+cartitem_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ElecBundle:CartItem:edit" }
+    methods:  [GET, POST]
+
+cartitem_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ElecBundle:CartItem:delete" }
+    methods:  DELETE

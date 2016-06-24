@@ -1,0 +1,24 @@
+orderinfo_index:
+    path:     /
+    defaults: { _controller: "ElecBundle:OrderInfo:index" }
+    methods:  GET
+
+orderinfo_show:
+    path:     /{id}/show
+    defaults: { _controller: "ElecBundle:OrderInfo:show" }
+    methods:  GET
+
+orderinfo_new:
+    path:     /new
+    defaults: { _controller: "ElecBundle:OrderInfo:new" }
+    methods:  [GET, POST]
+
+orderinfo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ElecBundle:OrderInfo:edit" }
+    methods:  [GET, POST]
+
+orderinfo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ElecBundle:OrderInfo:delete" }
+    methods:  DELETE
