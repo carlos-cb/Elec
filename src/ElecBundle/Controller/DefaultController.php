@@ -23,6 +23,6 @@ class DefaultController extends Controller
     
     public function backEndAction()
     {
-        return $this->render('ElecBundle:Elec:index.html.twig');
+        return $this->render('ElecBundle:BackEnd:overview.html.twig');
     }
 }

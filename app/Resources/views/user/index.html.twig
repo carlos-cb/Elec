@@ -1,23 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'ElecBundle:BackEnd:index.html.twig' %}
 
-{% block body %}
-    <h1>User list</h1>
+{% block content %}
+    <h1 class="sub-header">User List</h1>
 
-    <table>
+    <table class="table table-bordered table-striped table-hover">
         <thead>
-        <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Enabled</th>
-            <th>Lastlogin</th>
-            <th>Locked</th>
-            <th>Expired</th>
-            <th>Roles</th>
-            <th>Credentialsexpired</th>
-            <th>Cart</th>
-            <th>Actions</th>
-        </tr>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Enabled</th>
+                <th>Lastlogin</th>
+                <th>Locked</th>
+                <th>Expired</th>
+                <th>Roles</th>
+                <th>Credentialsexpired</th>
+                <th>Cart</th>
+                <th>Actions</th>
+            </tr>
         </thead>
         <tbody>
         {% for user in users %}
@@ -29,7 +29,6 @@
                 <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ user.locked }}</td>
                 <td>{{ user.expired }}</td>
-                <td>{{ user.cart }}</td>
                 <td>
                     <ul class="list">
                         {%for role in user.roles %}
@@ -38,6 +37,7 @@
                     </ul>
                 </td>
                 <td>{{ user.credentialsExpired }}</td>
+                <td>{{ user.cart }}</td>
                 <td>
                     <ul>
                         <li>

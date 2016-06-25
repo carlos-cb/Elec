@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'ElecBundle:BackEnd:index.html.twig' %}
 
-{% block body %}
-    <h1>User edit</h1>
+{% block content %}
+    <h1 class="sub-header">User edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
