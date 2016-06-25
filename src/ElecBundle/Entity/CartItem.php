@@ -136,4 +136,8 @@ class CartItem
     {
         return $this->cart;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

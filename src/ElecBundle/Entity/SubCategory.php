@@ -153,4 +153,8 @@ class SubCategory
     {
         return $this->category;
     }
+    
+    public function __toString() {
+        return strval($this->id);
+    }
 }

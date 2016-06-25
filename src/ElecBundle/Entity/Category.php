@@ -125,4 +125,8 @@ class Category
     {
         return $this->subCategorys;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

@@ -100,4 +100,8 @@ class User extends BaseUser
     {
         return $this->orderInfos;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

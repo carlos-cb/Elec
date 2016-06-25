@@ -136,4 +136,8 @@ class OrderItem
     {
         return $this->orderInfo;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

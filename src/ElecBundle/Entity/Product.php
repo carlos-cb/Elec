@@ -360,4 +360,8 @@ class Product
     {
         return $this->subCategory;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

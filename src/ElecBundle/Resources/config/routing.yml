@@ -41,3 +41,7 @@ elec_homepage:
 elec_profile:
     resource: "@ElecBundle/Resources/config/routing/profile.yml"
     prefix:   /admin/profile
+
+elec_homepage_cart:
+    path:     /cart/{id}
+    defaults: { _controller: ElecBundle:Default:addToCart }

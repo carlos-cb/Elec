@@ -81,7 +81,7 @@
                     <td>{{ product.memberPrice }}</td>
                     <td>{{ product.stock }}</td>
                     <td>{{ product.buyMinNumber }}</td>
-                    <td>{{ product.imagen }}</td>
+                    <td><img src="{{ product.imagen }}" height="50px" width="50px"/></td>
                     <td>{{ product.description }}</td>
                     <td>{% if product.isHot %}Yes{% else %}No{% endif %}</td>
                     <td>{% if product.isDiscount %}Yes{% else %}No{% endif %}</td>
@@ -92,7 +92,7 @@
                                 <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
                             </li>
                             <li>
-                                <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                                <a href="{{ path('elec_homepage_cart', { 'id': product.id }) }}">Add to Cart</a>
                             </li>
                         </ul>
                     </td>
