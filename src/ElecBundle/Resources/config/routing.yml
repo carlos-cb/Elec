@@ -52,4 +52,4 @@ elec_homepage_cart_new:
 
 elec_homepage_cart_delete:
     path:     /cart/delete/{id}
-    defaults: { _controller: "ElecBundle:Default:deleteFromCart" }
+    defaults: { _controller: ElecBundle:Default:deleteFromCart }

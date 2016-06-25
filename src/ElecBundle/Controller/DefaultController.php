@@ -76,6 +76,5 @@ class DefaultController extends Controller
         $em->flush();
 
         return $this->redirectToRoute("elec_homepage_cart");
-
     }
 }

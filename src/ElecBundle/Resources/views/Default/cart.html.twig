@@ -10,15 +10,17 @@
                     <th>Id</th>
                     <th>Unitprice</th>
                     <th>Quantity</th>
+                    <th>ItemPrice</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="cartBody">
             {% for cartItem in cartItems %}
                 <tr>
                     <td><a href="{{ path('cartitem_show', { 'id': cartItem.id }) }}">{{ cartItem.id }}</a></td>
-                    <td>{{ cartItem.unitPrice }}</td>
-                    <td>{{ cartItem.quantity }}</td>
+                    <td id="price">{{ cartItem.unitPrice }}</td>
+                    <td><input title="quantity" id="quantity" type="text" value="{{ cartItem.quantity }}"></td>
+                    <td id="allprice"></td>
                     <td>
                         <ul>
                             <li>
@@ -34,7 +36,12 @@
             </tbody>
         </table>
         <ul>
+            <li>All Items Price: <span id="sum"></span>$</li>
             <li><a href="{{ path('elec_homepage') }}">Home</a></li>
         </ul>
     </div>
 {% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            <script src="{{ asset('bundles/elec/js/cart.js') }}"></script>
+        {% endblock %}
