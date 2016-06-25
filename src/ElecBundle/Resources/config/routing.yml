@@ -37,3 +37,7 @@ elec_user:
 elec_homepage:
     path:     /
     defaults: { _controller: ElecBundle:Default:index }
+
+elec_profile:
+    resource: "@ElecBundle/Resources/config/routing/profile.yml"
+    prefix:   /admin/profile

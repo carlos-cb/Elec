@@ -1,57 +1,105 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/elec/css/navbar-fixed-top.css') }}" rel="stylesheet">
+{% endblock %}
 {% block body %}
-    <h1>Index</h1>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li class="dropdown-header">Nav header</li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('elec_homepage_admin') }}">BackEnd</a></li>
+                    <li><a href="../navbar-static-top/">Static top</a></li>
+                    <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
 
-    <ul>
-        <li>
-            <a href="{{ path('elec_homepage_admin') }}">BackEnd</a>
-        </li>
-    </ul>
+    <div class="container">
 
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Productname</th>
-            <th>Marketprice</th>
-            <th>Memberprice</th>
-            <th>Stock</th>
-            <th>Buyminnumber</th>
-            <th>Imagen</th>
-            <th>Description</th>
-            <th>Ishot</th>
-            <th>Isdiscount</th>
-            <th>Createdate</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
+        <!-- Main component for a primary marketing message or call to action -->
+        <div class="jumbotron">
+            <h1>Navbar example</h1>
+            <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+            <p>
+                <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+            </p>
+        </div>
+
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
             <tr>
-                <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
-                <td>{{ product.productname }}</td>
-                <td>{{ product.marketPrice }}</td>
-                <td>{{ product.memberPrice }}</td>
-                <td>{{ product.stock }}</td>
-                <td>{{ product.buyMinNumber }}</td>
-                <td>{{ product.imagen }}</td>
-                <td>{{ product.description }}</td>
-                <td>{% if product.isHot %}Yes{% else %}No{% endif %}</td>
-                <td>{% if product.isDiscount %}Yes{% else %}No{% endif %}</td>
-                <td>{% if product.createDate %}{{ product.createDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                <th>Id</th>
+                <th>Productname</th>
+                <th>Marketprice</th>
+                <th>Memberprice</th>
+                <th>Stock</th>
+                <th>Buyminnumber</th>
+                <th>Imagen</th>
+                <th>Description</th>
+                <th>Ishot</th>
+                <th>Isdiscount</th>
+                <th>Createdate</th>
+                <th>Actions</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td><a href="{{ path('product_show', { 'id': product.id }) }}">{{ product.id }}</a></td>
+                    <td>{{ product.productname }}</td>
+                    <td>{{ product.marketPrice }}</td>
+                    <td>{{ product.memberPrice }}</td>
+                    <td>{{ product.stock }}</td>
+                    <td>{{ product.buyMinNumber }}</td>
+                    <td>{{ product.imagen }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{% if product.isHot %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if product.isDiscount %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if product.createDate %}{{ product.createDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('product_edit', { 'id': product.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div> <!-- /container -->
 {% endblock %}
