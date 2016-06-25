@@ -28,6 +28,16 @@ class DefaultController extends Controller
         return $this->render('ElecBundle:BackEnd:overview.html.twig');
     }
 
+    public function cartAction()
+    {
+        $user = $this->getUser();
+        $cartItems = $user->getCart()->getCartItems();
+
+        return $this->render('ElecBundle:Default:cart.html.twig', array(
+            'cartItems' => $cartItems,
+        ));
+    }
+
     /**
      * Lists all CartItem entities.
      *
@@ -35,20 +45,37 @@ class DefaultController extends Controller
     public function addToCartAction(Product $product)
     {
         $user = $this->getUser();
-        $cartItem = new CartItem();
-        $cartItem->setCart($user->getCart())
-                 ->setProduct($product)
-                 ->setQuantity($product->getBuyMinNumber())
-                 ->setUnitPrice($product->getMarketPrice());
+        $cart = $user->getCart();
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($cartItem);
+        $cartItemExiste = $em->getRepository('ElecBundle:CartItem')->findBy(
+            array('product' => $product, 'cart' => $cart)
+        );
+
+        if(!$cartItemExiste){
+            $cartItem = new CartItem();
+            $cartItem->setCart($user->getCart())
+                     ->setProduct($product)
+                     ->setQuantity($product->getBuyMinNumber())
+                     ->setUnitPrice($product->getMarketPrice());
+
+            $em->persist($cartItem);
+            $em->flush();
+        }else{
+            throw $this->createNotFoundException(
+                'Cart already have this Item ');
+        }
+
+        return $this->redirectToRoute("elec_homepage_cart");
+    }
+
+    public function deleteFromCartAction(CartItem $cartItem)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($cartItem);
         $em->flush();
 
-        $cartItems = $user->getCart()->getCartItems();
+        return $this->redirectToRoute("elec_homepage_cart");
 
-        return $this->render('ElecBundle:Default:cart.html.twig', array(
-            'cartItems' => $cartItems,
-        ));
     }
 }

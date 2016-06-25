@@ -2,42 +2,39 @@
 
 {% block body %}
     <div class="container">
-    <h1 class="sub-header">CartItem list</h1>
+        <h1 class="sub-header">CartItem list</h1>
 
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Unitprice</th>
-                <th>Quantity</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for cartItem in cartItems %}
-            <tr>
-                <td><a href="{{ path('cartitem_show', { 'id': cartItem.id }) }}">{{ cartItem.id }}</a></td>
-                <td>{{ cartItem.unitPrice }}</td>
-                <td>{{ cartItem.quantity }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('cartitem_show', { 'id': cartItem.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('cartitem_edit', { 'id': cartItem.id }) }}">delete</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('cartitem_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Unitprice</th>
+                    <th>Quantity</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cartItem in cartItems %}
+                <tr>
+                    <td><a href="{{ path('cartitem_show', { 'id': cartItem.id }) }}">{{ cartItem.id }}</a></td>
+                    <td>{{ cartItem.unitPrice }}</td>
+                    <td>{{ cartItem.quantity }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('cartitem_show', { 'id': cartItem.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('elec_homepage_cart_delete', { 'id': cartItem.id }) }}">delete</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <ul>
+            <li><a href="{{ path('elec_homepage') }}">Home</a></li>
+        </ul>
     </div>
 {% endblock %}

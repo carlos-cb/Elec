@@ -43,5 +43,13 @@ elec_profile:
     prefix:   /admin/profile
 
 elec_homepage_cart:
-    path:     /cart/{id}
+    path:     /cart
+    defaults: { _controller: ElecBundle:Default:cart }
+
+elec_homepage_cart_new:
+    path:     /cart/new/{id}
     defaults: { _controller: ElecBundle:Default:addToCart }
+
+elec_homepage_cart_delete:
+    path:     /cart/delete/{id}
+    defaults: { _controller: "ElecBundle:Default:deleteFromCart" }

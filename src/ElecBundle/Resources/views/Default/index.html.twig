@@ -36,7 +36,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ path('elec_homepage_admin') }}">BackEnd</a></li>
-                    <li><a href="../navbar-static-top/">Static top</a></li>
+                    <li><a href="{{ path('elec_homepage_cart') }}">My Cart</a></li>
                     <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
                 </ul>
             </div><!--/.nav-collapse -->
@@ -92,7 +92,7 @@
                                 <a href="{{ path('product_show', { 'id': product.id }) }}">show</a>
                             </li>
                             <li>
-                                <a href="{{ path('elec_homepage_cart', { 'id': product.id }) }}">Add to Cart</a>
+                                <a href="{{ path('elec_homepage_cart_new', { 'id': product.id }) }}">Add to Cart</a>
                             </li>
                         </ul>
                     </td>
